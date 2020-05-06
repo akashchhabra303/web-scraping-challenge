@@ -17,9 +17,9 @@ def index():
 @app.route("/scrape")
 def scraper():
     mars = mongo.db.mars
-    mars_data = scrape_mars.scrape_all()
+    mars_data = scrape_mars.scrape()
     mars.replace_one({}, mars_data, upsert=True)
-    return "Scrapping Sucessful"
+    return redirect('/')
 
 
 if __name__ == "__main__":
